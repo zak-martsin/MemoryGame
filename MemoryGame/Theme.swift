@@ -7,8 +7,9 @@
 
 
 struct Theme<Content> {
-        let name: String
-        let numberOfPairs: Int
-        let content: [Content]
-    }
+    let name: String
+    let numberOfPairs: Int
+    let color: String
+    let content: [Content]
+}
 

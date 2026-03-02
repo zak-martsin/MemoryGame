@@ -15,7 +15,7 @@ struct MemoryGameModel<Content: Equatable>{
         self.cards = []
         for pairIndex in 0..<max(2, numberOfPairs){
             cards.append(Card(content: contentFactory(pairIndex), id: "\(pairIndex + 1)a"))
-            cards.append(Card(content: contentFactory(pairIndex), id: "\(pairIndex + 1)a"))
+            cards.append(Card(content: contentFactory(pairIndex), id: "\(pairIndex + 1)b"))
             cards.shuffle()
         }
     }
@@ -23,8 +23,8 @@ struct MemoryGameModel<Content: Equatable>{
 
 
     struct Card: Equatable, Identifiable{
-        let isFaceUp = true
-        let isMatched = false
+        var isFaceUp = true
+        var isMatched = false
         let isWasShown = false
         let content: Content
 
