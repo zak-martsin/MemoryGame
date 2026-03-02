@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import Combine
 
-class ViewModel {
-    private let currentTheme: Theme<String>
-    private let model: MemoryGameModel<String>
+class ViewModel: ObservableObject{
+     let currentTheme: Theme<String>
+    @Published var model: MemoryGameModel<String>
 
     private static func createGame (from theme: Theme<String>) -> MemoryGameModel<String> {
         return MemoryGameModel(numberOfPairs: theme.numberOfPairs) { pairIndex in
@@ -21,14 +22,17 @@ class ViewModel {
         }
     }
 
+    var cards: [MemoryGameModel<String>.Card] {
+        model.cards
+    }
 
     private let themes: [Theme<String>] = [
-        Theme(name: "Love", numberOfPairs: 4, content: ["😍","💕","💝","💛","💒","👩‍❤️‍💋‍👨","❣️"]),
-        Theme(name: "Animals", numberOfPairs: 4, content: ["🐈","🐈‍⬛","🐶","🐿️","🐇","🦬","🐵"]),
-        Theme(name: "Vehicles", numberOfPairs: 4, content: ["✈️","🚗","🚀","🚎","🚁","🛴","🏍️"]),
-        Theme(name: "Food", numberOfPairs: 4, content: ["🍔","🍩","🍳","🍎","🍭","🥑","🍒"]),
-        Theme(name: "Sport", numberOfPairs: 4, content: ["⚽️","🏓","🏋️‍♀️","⛹️‍♀️","🏎️","🏉","🏄‍♂️"]),
-        Theme(name: "Nature", numberOfPairs: 4, content: ["🔥","🌺","🌲","🌍","🌸","☀️","☘️"]),
+        Theme(name: "Love", numberOfPairs: 6, color: "red", content: ["😍","💕","💝","💛","💒","👩‍❤️‍💋‍👨","❣️"]),
+        Theme(name: "Animals", numberOfPairs: 7, color: "brown", content: ["🐈","🐈‍⬛","🐶","🐿️","🐇","🦬","🐵"]),
+        Theme(name: "Vehicles", numberOfPairs: 8, color: "blue", content: ["✈️","🚗","🚀","🚎","🚁","🛴","🏍️"]),
+        Theme(name: "Food", numberOfPairs: 4, color: "yellow",content: ["🍔","🍩","🍳","🍎","🍭","🥑","🍒"]),
+        Theme(name: "Sport", numberOfPairs: 7, color: "green",content: ["⚽️","🏓","🏋️‍♀️","⛹️‍♀️","🏎️","🏉","🏄‍♂️"]),
+        Theme(name: "Nature", numberOfPairs: 6,color: "orange" , content: ["🔥","🌺","🌲","🌍","🌸","☀️","☘️"]),
     ]
 
 
