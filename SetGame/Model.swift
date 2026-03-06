@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct MemoryGameModel<Content: Equatable> where Content: Hashable{
+struct SetGameModel{
     var cards: [Card]
 
     init (){

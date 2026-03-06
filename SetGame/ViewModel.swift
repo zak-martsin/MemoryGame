@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 class ViewModel: ObservableObject{
-    @Published var model: MemoryGameModel<String>
+    @Published var model: SetGameModel
 
-    private static func createGame () -> MemoryGameModel<String> {
-        return MemoryGameModel()
+    private static func createGame () -> SetGameModel {
+        return SetGameModel()
     }
 
-    var cards: [MemoryGameModel<String>.Card] {
+    var cards: [SetGameModel.Card] {
         model.cards
     }
 
