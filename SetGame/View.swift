@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SetGameView: View {
     private let aspectRatio: CGFloat = 2/3
-
+    
     @ObservedObject var viewModel: ViewModel
     var body: some View {
         VStack {
@@ -17,49 +17,33 @@ struct SetGameView: View {
         }
         .padding()
     }
-
+    
     var cards: some View {
         AspectVGrid(viewModel.cards, aspectRatio: aspectRatio){ card in
-                CardView(card: card)
-                    .padding(4)
-            }
-        .foregroundColor(.red)
+            CardView(card: card)
+                .padding(4)
         }
-
-
-
-
-
-
-
+        .foregroundColor(.black)
     }
-
-
-
-
-
-
-
-
-
-
-
-struct CardView: View {
-    let card: SetGameModel.Card
-    var body: some View {
-        ZStack{
-            let base = RoundedRectangle(cornerRadius: 12)
-            Group {
-                base.fill(.white)
-                base.strokeBorder(lineWidth: 3)
-//                Text(card)
-//                    .font(.system(size: 200))
-//                    .minimumScaleFactor(0.01)
-//                    .aspectRatio(1, contentMode: .fit)
-            }
-        }
-    }
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -67,6 +51,7 @@ struct CardView: View {
 #Preview {
     SetGameView(viewModel: ViewModel())
 }
+
 
 
 

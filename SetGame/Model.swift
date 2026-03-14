@@ -23,29 +23,7 @@ struct SetGameModel{
     }
 
 
-//    mutating func choose (card: Card) {
-//
-//        var selectedCards: [Card] = []
-//        var contentOfSelectedCards: Set<Content> = []
-//
-//        if let choosenIndex = cards.firstIndex(where: { $0.id == card.id}){
-//            if selectedCards.count < 3 {
-//                if cards[choosenIndex].isSelected {
-//                    cards[choosenIndex].isSelected = false
-//                } else {
-//                    cards[choosenIndex].isSelected = true
-//                    contentOfSelectedCards.insert(cards[choosenIndex].content)
-//                    if selectedCards.count == 3 {
-//
-//                    }
-//                }
-//
-//            }
-//        }
-//
-//
-//
-//    }
+
     struct Card: Equatable, Identifiable, Hashable{
         var isMatched = false
         var isSelected = false
