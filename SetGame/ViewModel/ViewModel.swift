@@ -16,18 +16,29 @@ class ViewModel: ObservableObject{
     }
 
     var cards: [SetGameModel.Card] {
-        model.cards
+        model.board
+    }
+    var cardsOnTheDeck: [SetGameModel.Card]{
+        model.deck
     }
 
 
+    init() { model = ViewModel.createGame() }
 
-    init() {
+//MARK: - Intension
+     func createNewGame (){
         model = ViewModel.createGame()
-        print (cards)
+         model.shuffle()
+
     }
 
+    func dealThreeCardsToBoard() {
+        model.dealCardsToBoard(count: 3)
+    }
 
-
+    func choose (card: SetGameModel.Card) {
+        model.choose(card: card)
+    }
 }
 
 

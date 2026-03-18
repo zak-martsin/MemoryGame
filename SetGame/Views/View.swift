@@ -14,6 +14,11 @@ struct SetGameView: View {
     var body: some View {
         VStack {
             cards
+            HStack(spacing: 80){
+                createNewGame
+                cardAdder
+                    .opacity(viewModel.cardsOnTheDeck.isEmpty ? 0 : 1)
+            }
         }
         .padding()
     }
@@ -22,16 +27,25 @@ struct SetGameView: View {
         AspectVGrid(viewModel.cards, aspectRatio: aspectRatio){ card in
             CardView(card: card)
                 .padding(4)
+                .onTapGesture { viewModel.choose(card: card) }
         }
-        .foregroundColor(.black)
     }
     
     
-    
-    
-    
-    
-    
+    var createNewGame: some View {
+        Button ("New Game"){
+            viewModel.createNewGame()
+        }
+        .font(.largeTitle)
+    }
+
+    var cardAdder: some View {
+        Button ("+3"){
+            viewModel.dealThreeCardsToBoard()
+        }
+        .font(.largeTitle)
+    }
+
 }
 
 

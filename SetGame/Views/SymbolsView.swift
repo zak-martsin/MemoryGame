@@ -23,9 +23,9 @@ struct SymbolsView: View {
         makeShapes()
     }
     
-    func makeShapes () -> some View {
+   private func makeShapes () -> some View {
         VStack(spacing: 3){
-            ForEach(0..<card.quantite, id: \.self){_  in
+            ForEach(0..<card.quantity, id: \.self){_  in
                 formSetter()
                 
             }
@@ -36,7 +36,7 @@ struct SymbolsView: View {
     
     @ViewBuilder
     private   func formSetter () -> some View {
-        switch card.form {
+        switch card.shape {
         case .rectangle:
             fillerSetter(for: Rectangle())
         case .oval:
@@ -50,7 +50,7 @@ struct SymbolsView: View {
     @ViewBuilder
     private func fillerSetter (for form: some Shape) -> some View{
         
-        switch card.filling {
+        switch card.shading{
         case .empty:
             form.stroke(color, lineWidth: 1.8).frame(
                 width: shapeSize.width,
