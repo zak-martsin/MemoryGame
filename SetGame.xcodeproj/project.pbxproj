@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		CED870222F5342E700F59531 /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED870222F5342E700F59531 /* SetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CED870242F5342E700F59531 /* MemoryGame */ = {
+		CED870242F5342E700F59531 /* SetGame */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MemoryGame;
+			path = SetGame;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		CED870192F5342E700F59531 = {
 			isa = PBXGroup;
 			children = (
-				CED870242F5342E700F59531 /* MemoryGame */,
+				CED870242F5342E700F59531 /* SetGame */,
 				CED870232F5342E700F59531 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		CED870232F5342E700F59531 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CED870222F5342E700F59531 /* MemoryGame.app */,
+				CED870222F5342E700F59531 /* SetGame.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CED870212F5342E700F59531 /* MemoryGame */ = {
+		CED870212F5342E700F59531 /* SetGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CED8702D2F5342EA00F59531 /* Build configuration list for PBXNativeTarget "MemoryGame" */;
+			buildConfigurationList = CED8702D2F5342EA00F59531 /* Build configuration list for PBXNativeTarget "SetGame" */;
 			buildPhases = (
 				CED8701E2F5342E700F59531 /* Sources */,
 				CED8701F2F5342E700F59531 /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CED870242F5342E700F59531 /* MemoryGame */,
+				CED870242F5342E700F59531 /* SetGame */,
 			);
-			name = MemoryGame;
+			name = SetGame;
 			packageProductDependencies = (
 			);
 			productName = MemoryGame;
-			productReference = CED870222F5342E700F59531 /* MemoryGame.app */;
+			productReference = CED870222F5342E700F59531 /* SetGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CED8701D2F5342E700F59531 /* Build configuration list for PBXProject "MemoryGame" */;
+			buildConfigurationList = CED8701D2F5342E700F59531 /* Build configuration list for PBXProject "SetGame" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CED870212F5342E700F59531 /* MemoryGame */,
+				CED870212F5342E700F59531 /* SetGame */,
 			);
 		};
 /* End PBXProject section */
@@ -309,7 +309,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CED8701D2F5342E700F59531 /* Build configuration list for PBXProject "MemoryGame" */ = {
+		CED8701D2F5342E700F59531 /* Build configuration list for PBXProject "SetGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CED8702B2F5342EA00F59531 /* Debug */,
@@ -318,7 +318,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CED8702D2F5342EA00F59531 /* Build configuration list for PBXNativeTarget "MemoryGame" */ = {
+		CED8702D2F5342EA00F59531 /* Build configuration list for PBXNativeTarget "SetGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CED8702E2F5342EA00F59531 /* Debug */,
