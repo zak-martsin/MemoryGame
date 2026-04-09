@@ -21,6 +21,9 @@ class ViewModel: ObservableObject{
     var cardsOnTheDeck: [SetGameModel.Card]{
         model.deck
     }
+    var discardPile: [SetGameModel.Card] {
+        model.discardPile
+    }
 
 
     init() { model = ViewModel.createGame() }
@@ -28,8 +31,11 @@ class ViewModel: ObservableObject{
 //MARK: - Intension
      func createNewGame (){
         model = ViewModel.createGame()
-         model.shuffle()
+         shuffle()
 
+    }
+    func shuffle () {
+        model.shuffle()
     }
 
     func dealThreeCardsToBoard() {

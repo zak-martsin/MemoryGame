@@ -11,29 +11,25 @@ struct SymbolsView: View {
     let card: SetGameModel.Card
     let size: CGSize
     var shapeSize: CGSize {
-        CGSize(width: size.width * 0.6,
-               height: size.height / 3 - 7) // OneShapeHeight - spasing
-    }
-    init(for card: SetGameModel.Card,in  size: CGSize) {
-        self.card = card
-        self.size = size
-    }
-    
+        let width = size.width * Constatns.shapeWidthRatio
+        let height = size.height / Constatns.maxShapesCount - Constatns.Symbolspasing
+        return CGSize(width: width ,height: height)}
+
     var body: some View {
         makeShapes()
     }
-    
-   private func makeShapes () -> some View {
+
+    private func makeShapes () -> some View {
         VStack(spacing: 3){
             ForEach(0..<card.quantity, id: \.self){_  in
                 formSetter()
-                
+
             }
         }
     }
-    
-    
-    
+
+
+
     @ViewBuilder
     private   func formSetter () -> some View {
         switch card.shape {
@@ -45,37 +41,37 @@ struct SymbolsView: View {
             fillerSetter(for: DiamondShape())
         }
     }
-    
-    
+
+
     @ViewBuilder
     private func fillerSetter (for form: some Shape) -> some View{
-        
+
         switch card.shading{
         case .empty:
-            form.stroke(color, lineWidth: 1.8).frame(
+            form.stroke(color, lineWidth: Constatns.lineWidth).frame(
                 width: shapeSize.width,
                 height: shapeSize.height
             )
-            
+
         case .filled:
             form.fill(color).frame(
                 width: shapeSize.width,
                 height: shapeSize.height
             )
         case .striped:
-            form.stroke(color, lineWidth: 1.8).frame(
+            form.stroke(color, lineWidth: Constatns.lineWidth).frame(
                 width: shapeSize.width,
                 height: shapeSize.height
             )
             .overlay(
                 StripesShape()
-                    .stroke(color, lineWidth: 2)
+                    .stroke(color, lineWidth: Constatns.stripesWidth)
                     .clipShape(form)
             )
         }
     }
-    
-    
+
+
     private   var color: Color {
         switch card.color {
         case .red:
@@ -86,6 +82,13 @@ struct SymbolsView: View {
             return .green
         }
     }
-    
+    private struct Constatns {
+        static let shapeWidthRatio: CGFloat = 0.6
+        static let maxShapesCount: CGFloat = 3
+        static let Symbolspasing: CGFloat = 10
+        static let lineWidth: CGFloat = 1.8
+        static let stripesWidth: CGFloat = 2
+    }
+
 }
 
