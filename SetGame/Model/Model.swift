@@ -9,6 +9,7 @@ import Foundation
 struct SetGameModel{
     var board: [Card]
     var deck: [Card]
+    var discardPile = [Card]()
     init (){
         self.board = []
         self.deck = []
@@ -23,6 +24,7 @@ struct SetGameModel{
     struct Card: Equatable, Identifiable, Hashable{
         var matchStatus = CardMatchState.neither
         var isSelected = false
+        var isFaceUp = false
 
         let shape: Shape
         let color: Color
@@ -94,28 +96,37 @@ struct SetGameModel{
             return true
         }
     }
+    var matchedCards: [Card] {board.filter({$0.matchStatus  == .matched})}
 
+    var mismatchedCards: [Card] {board.filter({$0.matchStatus  == .mismatched})}
     private mutating func resolvePreviousSelection () {
-        var cardsToResolve: [Card] {board.filter({$0.matchStatus == .matched || $0.matchStatus == .mismatched })}
+        resetMismatchedSelection()
+        let matchCount = moveMatchedCardsToDiscardPile()
+        if matchCount > 0 {
+            dealCardsToBoard(count: matchCount)
+        }
+    }
 
-        for card in cardsToResolve {
-            switch card.matchStatus {
-            case .matched:
-                if let chosenIndex = board.firstIndex(where: {$0.id == card.id}) {
-                    board.remove(at: chosenIndex)
-                    dealCardsToBoard(count: 1)
-                }
-            case .mismatched:
-                if let chosenIndex = board.firstIndex(where: {$0.id == card.id}) {
-                    board[chosenIndex].matchStatus = .neither
-                    board[chosenIndex].isSelected = false
-                }
-            case .neither:
-                return
+    private mutating func resetMismatchedSelection () {
+        for card in mismatchedCards {
+            if let chosenIndex = board.firstIndex(where: {$0.id == card.id}) {
+                board[chosenIndex].matchStatus = .neither
+                board[chosenIndex].isSelected = false
             }
         }
     }
 
+    private mutating func moveMatchedCardsToDiscardPile () -> Int {
+        var matchCount = 0
+        for card in matchedCards {
+            if let chosenIndex = board.firstIndex(where: {$0.id == card.id}) {
+                board[chosenIndex].isSelected = false
+                discardPile.append(board.remove(at: chosenIndex))
+                matchCount += 1
+            }
+        }
+        return matchCount
+    }
 
 
     private mutating func buildDeck () {
@@ -139,6 +150,11 @@ struct SetGameModel{
 
                 for _ in 1...count {
                     board.append(deck.removeFirst())
+                }
+                for card in board {
+                    if let choosenIndex = board.firstIndex(where: {$0.id == card.id}) {
+                        board[choosenIndex].isFaceUp = true
+                    }
                 }
             }
         }
